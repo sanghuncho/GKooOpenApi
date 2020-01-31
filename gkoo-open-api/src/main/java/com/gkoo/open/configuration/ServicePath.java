@@ -5,4 +5,6 @@ public class ServicePath {
 	public static final String BASE_HOST = "http://localhost:3000/";
 	
 	public static final String NOTICE_BOARD = BASE_HOST + "noticeBoard";
+	
+	public static final String BUYING_SERVICE = BASE_HOST + "buyingService";
 }

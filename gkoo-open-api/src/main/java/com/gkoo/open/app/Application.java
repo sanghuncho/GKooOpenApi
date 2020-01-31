@@ -13,7 +13,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  * @author sanghuncho
  *
  */
-@SpringBootApplication(scanBasePackages = {"com.gkoo.open.controller","com.gkoo.open.data", "com.gkoo.open.service", "com.gkoo.open.serviceImpl", "com.gkoo.open.configuration"   })
+@SpringBootApplication(scanBasePackages = {"com.gkoo.open.controller","com.gkoo.open.data", "com.gkoo.open.service", "com.gkoo.open.serviceImpl", "com.gkoo.open.configuration" })
 public class Application extends SpringBootServletInitializer  {
     private static final Logger LOGGER = LogManager.getLogger(Application.class);
     
