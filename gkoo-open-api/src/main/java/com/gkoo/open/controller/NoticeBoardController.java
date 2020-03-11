@@ -28,7 +28,9 @@ public class NoticeBoardController {
         this.noticeBoardService = noticeBoardService;
     }
     
-    @CrossOrigin(origins = "http://localhost:3000")
+    //production
+    @CrossOrigin(origins = "http://gkoo.co.kr")
+    //@CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/getNoticeList")
     public List<NoticeData> requestNotices(HttpServletRequest request) throws SQLException {
         return noticeBoardService.getNotices();
