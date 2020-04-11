@@ -41,7 +41,8 @@ public class ConnectionDB {
 
 		if (conn == null) {
 		    LOGGER.error("Failed to make connection with DB!", conn);
-		}   	
+		}
+		
     }
 	
 	public static Connection getConnectInstance() {

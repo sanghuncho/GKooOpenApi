@@ -1,3 +1,137 @@
+<<<<<<< HEAD
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>GkooBackend</groupId>
+  <artifactId>gkooOpenApi</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>gkooOpenApi</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+   	<start-class>com.gkoo.open.app.Application</start-class>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+  	<version>2.0.3.RELEASE</version>
+  </parent>
+
+  <dependencies>
+  	<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+                
+            </exclusions>
+    	<version>2.0.3.RELEASE</version>        
+    </dependency>
+    
+    <dependency>
+	   <groupId>org.springframework.boot</groupId>
+	   <artifactId>spring-boot-starter-tomcat</artifactId>
+	   <scope>provided</scope>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework.security</groupId>
+	    <artifactId>spring-security-core</artifactId>
+	    <version>5.0.0.RELEASE</version>
+ 	</dependency>
+	
+<!-- Database -->
+	<dependency>
+	    <groupId>org.postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>42.2.6</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>9.1-901-1.jdbc4</version>
+	</dependency>
+
+<!-- Logging -->
+    <dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-core</artifactId>
+	    <version>2.12.1</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-api</artifactId>
+	    <version>2.12.1</version>
+	</dependency>
+	
+	<!-- Testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>json</artifactId>
+	    <version>20180813</version>
+	</dependency>
+	
+	 <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.8.6</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>com.jayway.jsonpath</groupId>
+    	<artifactId>json-path</artifactId>  
+    </dependency>
+    
+    <dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.9.10</version>
+	</dependency>
+	
+  </dependencies>
+  
+  <build>
+  
+  <plugins>
+    <plugin>
+      <!-- Build an executable JAR -->
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.2.0</version>
+      <configuration>
+        <archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>com.gkoo.open.app.Application</mainClass>
+          </manifest>
+        </archive>
+      </configuration>
+    </plugin>
+    
+  </plugins>
+  
+   <finalName>gkooOpenApi</finalName>
+</build>
+</project>
+=======
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -108,3 +242,4 @@
     <finalName>${artifactId}</finalName>
    </build>
 </project>
+>>>>>>> branch 'master' of https://github.com/sanghuncho/GKooOpenApi.git

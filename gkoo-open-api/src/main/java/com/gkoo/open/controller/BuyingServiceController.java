@@ -26,8 +26,8 @@ public class BuyingServiceController {
         this.buyingService = buyingService;
     }
     
-    @CrossOrigin(origins = "http://localhost:3000")
-    @RequestMapping(value = "/fastEstimationBuyingService", method = RequestMethod.POST)
+    @CrossOrigin(origins = {ServicePath.HOST_ADDRESS_DEV, ServicePath.HOST_ADDRESS_PROD})
+    @RequestMapping(value = "/fastEstimationBuyingService", method = {RequestMethod.POST, RequestMethod.OPTIONS})
     public EstimationService requestFastEstimationBuyingService(@RequestBody HashMap<String, Object>[] data, HttpServletRequest request) {        
         return buyingService.fastEstimationBuyingService(data);
     }
