@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.gkoo.open.configuration.ServicePath;
 import com.gkoo.open.data.NoticeData;
 import com.gkoo.open.service.NoticeBoardService;
 /**
@@ -28,12 +29,9 @@ public class NoticeBoardController {
         this.noticeBoardService = noticeBoardService;
     }
     
-    //production
-    @CrossOrigin(origins = "http://gkoo.co.kr")
-    //@CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = {ServicePath.HOST_ADDRESS_DEV, ServicePath.HOST_ADDRESS_PROD})
     @RequestMapping("/getNoticeList")
     public List<NoticeData> requestNotices(HttpServletRequest request) throws SQLException {
         return noticeBoardService.getNotices();
     }
 }
->>>>>>> branch 'master' of https://github.com/sanghuncho/GKooOpenApi.git

@@ -127,6 +127,6 @@
     
   </plugins>
   
-   <finalName>gkooOpenApi</finalName>
+   <finalName>${artifactId}</finalName>
 </build>
 </project>
