@@ -1,5 +1,6 @@
 package com.gkoo.open.serviceImpl;
 
+import java.io.IOException;
 import java.util.HashMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.gkoo.open.data.ConfigurationData;
 import com.gkoo.open.data.EstimationService;
+import com.gkoo.open.exception.BuyingserviceException;
 import com.gkoo.open.service.BuyingService;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -36,16 +38,19 @@ public class BuyingServiceImpl implements BuyingService {
     private double getCurrentEurToKrw() {
         
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response
-          = restTemplate.getForEntity(CURRENTCY_SERVICE_URL, String.class);
-        
+        ResponseEntity<String> response = null;
+        try {
+            response = restTemplate.getForEntity(CURRENTCY_SERVICE_URL, String.class);
+        } catch (BuyingserviceException ex) {
+            String error = "Error get Currency service";
+            LOGGER.error(error, ex);
+        }
         JsonParser parser = new JsonParser();
         JsonObject jsonObject = (JsonObject)parser.parse(response.getBody());
         System.out.println(response.getBody());
         JsonElement jsonElement = jsonObject.get("rates");
         
         JsonObject rates = jsonElement.getAsJsonObject();
-        //System.out.println(rates.get("KRW").getAsDouble());
         return rates.get("KRW").getAsDouble();
     }
 

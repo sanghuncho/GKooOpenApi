@@ -1,8 +1,6 @@
 package com.gkoo.open.controller;
 
-import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,7 +24,7 @@ public class BuyingServiceController {
         this.buyingService = buyingService;
     }
     
-    @CrossOrigin(origins = {ServicePath.HOST_ADDRESS_DEV, ServicePath.HOST_ADDRESS_PROD})
+    @CrossOrigin(origins = {ServicePath.FAST_ESTIMATION_DEV, ServicePath.FAST_ESTIMATION_PROD})
     @RequestMapping(value = "/fastEstimationBuyingService", method = {RequestMethod.POST, RequestMethod.OPTIONS})
     public EstimationService requestFastEstimationBuyingService(@RequestBody HashMap<String, Object>[] data, HttpServletRequest request) {        
         return buyingService.fastEstimationBuyingService(data);

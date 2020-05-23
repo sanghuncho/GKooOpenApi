@@ -29,7 +29,7 @@ public class NoticeBoardController {
         this.noticeBoardService = noticeBoardService;
     }
     
-    @CrossOrigin(origins = {ServicePath.HOST_ADDRESS_DEV, ServicePath.HOST_ADDRESS_PROD})
+    @CrossOrigin(origins = {ServicePath.NOTICE_BOARD_DEV, ServicePath.NOTICE_BOARD_PROD})
     @RequestMapping("/getNoticeList")
     public List<NoticeData> requestNotices(HttpServletRequest request) throws SQLException {
         return noticeBoardService.getNotices();
