@@ -4,13 +4,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.gkoo.open.data.ConfigurationData;
 import com.gkoo.open.data.EstimationService;
 import com.gkoo.open.exception.BuyingserviceException;
 import com.gkoo.open.service.BuyingService;
+import com.gkoo.open.service.commision.BuyingserviceCommision;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -24,6 +25,9 @@ public class BuyingServiceImpl implements BuyingService {
     private static final Logger LOGGER = LogManager.getLogger();
     private final String CURRENTCY_SERVICE_URL = "https://api.exchangeratesapi.io/latest?base=EUR";
 
+    @Autowired
+    private BuyingserviceCommision buyingserviceCommision;
+    
     @Override
     public EstimationService fastEstimationBuyingService(HashMap<String, Object>[] data) {
         double productsValue = Double.parseDouble(data[0].get("productsValue").toString());
@@ -54,14 +58,13 @@ public class BuyingServiceImpl implements BuyingService {
         return rates.get("KRW").getAsDouble();
     }
 
-    public int getEstimationBuyingService(double currentEurToKRW, double totalPrice) {
-        double feePercent = ConfigurationData.BUYING_SERVICE_FEE_PERCENT;
-        double result = (currentEurToKRW*totalPrice)*(1 + feePercent);
+    public int getEstimationBuyingService(double currentEurToKRW, double totalPriceEuro) {
     //    if (mergeBox) {
     //        double mergingBoxFee = ConfigurationData.MERGING_BOX_FEE;
     //        result = result + mergingBoxFee;
     //    }
-        return mathCeilDigit(2, result);
+        int result = buyingserviceCommision.getResult(currentEurToKRW, totalPriceEuro);
+        return result;
     }
 
     private int mathCeilDigit(int digit, double price) {
