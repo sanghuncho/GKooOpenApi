@@ -35,7 +35,8 @@ public class BuyingServiceImpl implements BuyingService {
         double currentEurToKRW = getCurrentEurToKrw();
         double totalPrice = productsValue + deliveryValue;
         EstimationService estimation = new EstimationService();
-        estimation.setResultPrice(getEstimationBuyingService(currentEurToKRW, totalPrice));        
+        estimation.setResultPrice(getEstimationBuyingService(currentEurToKRW, totalPrice));      
+        LOGGER.info("the result of fastEstimation in gkooOpenApi: " + estimation.getResultPrice());
         return estimation;
     }
     
